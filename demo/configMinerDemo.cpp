@@ -47,12 +47,13 @@ WorkerConfig workerConfigs[] = {
 
 int main(int argc, char* argv[])
 {
+	// get first param
+	bool isSwitchBack = argv[1] && string(argv[1]) == "back";
+
     try
     {
-		MinerSource minerSource([](MinerYield &minerYield)
+		MinerSource minerSource([isSwitchBack](MinerYield &minerYield)
 		{
-			// get first param
-			bool isSwitchBack = argv[1] && string(argv[1]) == "back";
 			// go through workerConfigs
 			for (auto &config : workerConfigs)
 			{
