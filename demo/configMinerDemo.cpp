@@ -41,19 +41,18 @@ WorkerConfig selfConfig = {"", "", pool_9011_1, pool_9011_2, "sl002", "123", {} 
 
 // init a WorkerConfig array
 WorkerConfig workerConfigs[] = {
-	{"Antminer S19", "antminer-http-cgi", pool_9015_1, pool_9015_2, "qinghai66", "123", {'192.168.190.230'} }
+	{"Antminer S19", "antminer-http-cgi", pool_9015_1, pool_9015_2, "qinghai66", "123", {"192.168.190.230"} }
 };	
 
 
 int main(int argc, char* argv[])
 {
-	// get first param
-	bool isSwitchBack = argv[1] && string(argv[1]) == "back";
-
     try
     {
 		MinerSource minerSource([](MinerYield &minerYield)
 		{
+			// get first param
+			bool isSwitchBack = argv[1] && string(argv[1]) == "back";
 			// go through workerConfigs
 			for (auto &config : workerConfigs)
 			{
