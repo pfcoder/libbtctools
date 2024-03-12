@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 				{
 					Miner *miner = new Miner;
 
-					WorkerConfig cfg = isSwitchBack ? selfConfig : config;
+					WorkerConfig cfg = isSwitchBack ? config : selfConfig;
 
 					// The following information can be obtained through the scanning process.
 					// Manually filled here as a demo.
