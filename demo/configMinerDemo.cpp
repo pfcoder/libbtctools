@@ -41,7 +41,7 @@ WorkerConfig selfConfig = {"", "", pool_9011_1, pool_9011_2, "sl002", "123", {} 
 
 // init a WorkerConfig array
 WorkerConfig workerConfigs[] = {
-	{"Antminer S19", "antminer-http-cgi", pool_9015_1, pool_9015_2, "qinghai66", "123", {"192.168.190.230"} }
+	{"Antminer S19", "AntminerHttpCgi", pool_9015_1, pool_9015_2, "qinghai66", "123", {"192.168.190.230"} }
 };	
 
 
@@ -119,6 +119,11 @@ int main(int argc, char* argv[])
 		});
 
 		OOLuaHelper::setPackagePath("./lua/scripts");
+
+		btctools::utils::OOLuaHelper::setOpt("login.minerPasswords", Crypto::base64Encode("Antminer S19") + ":" +
+																	 Crypto::base64Encode("root") + ":" +
+																	 Crypto::base64Encode("root"));
+
 		MinerConfigurator config(minerSource, 10); // configure 10 miners at the same time
 
 		auto source = config.run(10);
